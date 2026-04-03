@@ -1,5 +1,12 @@
 ﻿using System;
 
+// Value Type
+struct Marks
+{
+    public int score;
+}
+
+// Reference Type
 class Student
 {
     public string name;
@@ -9,39 +16,39 @@ class Student
 class Program
 {
     // Method to modify value type
-    static void ModifyValue(int num)
+    static void ModifyValueType(Marks m)
     {
-        num = num + 50;
-        Console.WriteLine("Inside ModifyValue: " + num);
+        m.score = 90;
     }
 
     // Method to modify reference type
-    static void ModifyReference(Student s)
+    static void ModifyReferenceType(Student s)
     {
-        s.name = "Changed Name";
-        s.marks = s.marks + 50;
-        Console.WriteLine("Inside ModifyReference: " + s.name + " - " + s.marks);
+        s.name = "Sushma";
+        s.marks = 95;
     }
 
     static void Main(string[] args)
     {
-        // VALUE TYPE
-        int marks = 50;
-        Console.WriteLine("Before ModifyValue: " + marks);
-        ModifyValue(marks);
-        Console.WriteLine("After ModifyValue: " + marks);
+        // Value Type Example
+        Marks m1 = new Marks();
+        m1.score = 50;
 
-        Console.WriteLine();
+        // Reference Type Example
+        Student s1 = new Student();
+        s1.name = "Sushma";
+        s1.marks = 60;
 
-        // REFERENCE TYPE
-        Student student = new Student();
-        student.name = "Sandesh Bhusal";
-        student.marks = 50;
+        // Calling methods
+        ModifyValueType(m1);
+        ModifyReferenceType(s1);
 
-        Console.WriteLine("Before ModifyReference: " + student.name + " - " + student.marks);
-        ModifyReference(student);
-        Console.WriteLine("After ModifyReference: " + student.name + " - " + student.marks);
+        // Display results
+        Console.WriteLine("Value Type Marks: " + m1.score);
+        Console.WriteLine("Reference Type Name: " + s1.name);
+        Console.WriteLine("Reference Type Marks: " + s1.marks);
 
         Console.ReadLine();
     }
 }
+
