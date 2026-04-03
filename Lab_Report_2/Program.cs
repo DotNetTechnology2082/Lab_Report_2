@@ -1,47 +1,66 @@
 ﻿using System;
 
-class Student
+namespace LabReport2
 {
-    public string name;
-    public int marks;
-}
-
-class Program
-{
-    // Method to modify value type
-    static void ModifyValue(int num)
+    // 1) Value Type (struct)
+    struct Marks
     {
-        num = num + 50;
-        Console.WriteLine("Inside ModifyValue: " + num);
+        public int score;
     }
 
-    // Method to modify reference type
-    static void ModifyReference(Student s)
+    // 2) Reference Type (class)
+    class Student
     {
-        s.name = "Changed Name";
-        s.marks = s.marks + 50;
-        Console.WriteLine("Inside ModifyReference: " + s.name + " - " + s.marks);
+        public string name;
+        public Marks marks;
     }
 
-    static void Main(string[] args)
+    class Program
     {
-        // VALUE TYPE
-        int marks = 50;
-        Console.WriteLine("Before ModifyValue: " + marks);
-        ModifyValue(marks);
-        Console.WriteLine("After ModifyValue: " + marks);
+        // 3a) Method to modify value type
+        static void ModifyValueType(Marks m)
+        {
+            m.score = 98;
+            Console.WriteLine("Inside ModifyValueType: " + m.score);
+        }
 
-        Console.WriteLine();
+        // 3b) Method to modify reference type
+        static void ModifyReferenceType(Student s)
+        {
+            s.name = "Changed Name";
+            s.marks.score = 95;
+        }
 
-        // REFERENCE TYPE
-        Student student = new Student();
-        student.name = "Sandesh Bhusal";
-        student.marks = 50;
+        static void Main(string[] args)
+        {
+            // Create value type
+            Marks m1;
+            m1.score = 50;
 
-        Console.WriteLine("Before ModifyReference: " + student.name + " - " + student.marks);
-        ModifyReference(student);
-        Console.WriteLine("After ModifyReference: " + student.name + " - " + student.marks);
+            // Create reference type
+            Student s1 = new Student();
+            s1.name = "subham";
+            s1.marks = m1;
 
-        Console.ReadLine();
+            Console.WriteLine("Before Method Calls:");
+            Console.WriteLine("Marks: " + m1.score);
+            Console.WriteLine("Student Name: " + s1.name);
+            Console.WriteLine("Student Marks: " + s1.marks.score);
+
+            Console.WriteLine("\nCalling ModifyValueType...");
+            ModifyValueType(m1);
+
+            Console.WriteLine("After ModifyValueType:");
+            Console.WriteLine("Marks: " + m1.score); // unchanged
+
+            Console.WriteLine("\nCalling ModifyReferenceType...");
+            ModifyReferenceType(s1);
+
+            Console.WriteLine("After ModifyReferenceType:");
+            Console.WriteLine("Student Name: " + s1.name); // changed
+            Console.WriteLine("Student Marks: " + s1.marks.score); // changed
+
+            Console.ReadLine();
+        }
     }
 }
