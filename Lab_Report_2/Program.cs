@@ -35,8 +35,8 @@ class Program
 
         // REFERENCE TYPE
         Student student = new Student();
-        student.name = "Sandesh Bhusal";
-        student.marks = 50;
+        student.name = "Pasang Lama";
+        student.marks = 60;
 
         Console.WriteLine("Before ModifyReference: " + student.name + " - " + student.marks);
         ModifyReference(student);
