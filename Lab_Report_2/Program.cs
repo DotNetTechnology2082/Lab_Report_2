@@ -11,7 +11,7 @@ class Program
     // Method to modify value type
     static void ModifyValue(int num)
     {
-        num = num + 50;
+        num = num + 10;
         Console.WriteLine("Inside ModifyValue: " + num);
     }
 
@@ -19,7 +19,7 @@ class Program
     static void ModifyReference(Student s)
     {
         s.name = "Changed Name";
-        s.marks = s.marks + 50;
+        s.marks = s.marks + 10;
         Console.WriteLine("Inside ModifyReference: " + s.name + " - " + s.marks);
     }
 
@@ -35,7 +35,7 @@ class Program
 
         // REFERENCE TYPE
         Student student = new Student();
-        student.name = "Sandesh Bhusal";
+        student.name = "Pradip";
         student.marks = 50;
 
         Console.WriteLine("Before ModifyReference: " + student.name + " - " + student.marks);
